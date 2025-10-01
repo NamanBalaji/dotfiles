@@ -40,9 +40,42 @@ map("n", "<leader>ih", function()
     vim.lsp.inlay_hint.enable(not enabled)
 end, { desc = "Toggle Inlay Hints" })
 
--- Go helpers (ray-x/go.nvim)
-map("n", "<leader>tt", "<cmd>GoTest<CR>", { desc = "Go Test pkg" })
-map("n", "<leader>tf", "<cmd>GoTestFunc<CR>", { desc = "Go Test func" })
+-- testing
+map("n", "<leader>tn", function()
+    require("neotest").run.run()
+end, { desc = "Test Nearest" })
+
+map("n", "<leader>tf", function()
+    require("neotest").run.run(vim.fn.expand("%"))
+end, { desc = "Test File" })
+
+map("n", "<leader>ta", function()
+    require("neotest").run.run(vim.fn.getcwd())
+end, { desc = "Test All" })
+
+map("n", "<leader>ts", function()
+    require("neotest").summary.toggle()
+end, { desc = "Test Summary" })
+
+map("n", "<leader>to", function()
+    require("neotest").output.open({ enter = true })
+end, { desc = "Test Output" })
+
+map("n", "<leader>tO", function()
+    require("neotest").output_panel.toggle()
+end, { desc = "Test Output Panel" })
+
+map("n", "<leader>td", function()
+    require("neotest").run.run({ strategy = "dap" })
+end, { desc = "Debug Nearest Test" })
+
+map("n", "<leader>tS", function()
+    require("neotest").run.stop()
+end, { desc = "Stop Test" })
+
+map("n", "<leader>tw", function()
+    require("neotest").watch.toggle(vim.fn.expand("%"))
+end, { desc = "Toggle Watch File" })
 
 -- UFO
 map("n", "zR", require("ufo").openAllFolds, { desc = "Open all folds" })
@@ -53,4 +86,7 @@ map("n", "zK", function()
         vim.lsp.buf.hover()
     end
 end, { desc = "Peek fold or hover" })
--- map("n", "za", require("ufo").t)
+
+-- Code actions
+map("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP Code Action" })
+map("v", "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP Code Action" })

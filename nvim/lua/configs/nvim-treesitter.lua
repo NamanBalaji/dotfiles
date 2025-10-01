@@ -1,41 +1,32 @@
-local options = {
-    ensure_installed = {
-        -- vim
-        "vim",
-        "vimdoc",
+require("nvim-treesitter").setup()
 
-        -- lua
-        "lua",
-        "luadoc",
+local ensure_installed = {
+    -- vim
+    "vim",
+    "vimdoc",
 
-        -- go
-        "go",
-        "gomod",
-        "gowork",
+    -- lua
+    "lua",
+    "luadoc",
 
-        "rust",
+    -- go
+    "go",
+    "gomod",
+    "gowork",
 
-        -- other
-        "yaml",
-        "toml",
-        "bash",
-        "markdown",
-        "printf",
+    "rust",
 
-        "dockerfile",
-        "proto",
-        "make",
-        "markdown_inline",
-    },
+    -- other
+    "yaml",
+    "toml",
+    "bash",
+    "markdown",
+    "printf",
 
-    highlight = {
-        enable = true,
-        use_languagetree = true,
-    },
-
-    indent = {
-        enable = true,
-    },
+    "dockerfile",
+    "proto",
+    "make",
+    "markdown_inline",
 }
 
-require("nvim-treesitter.configs").setup(options)
+require("nvim-treesitter").install(ensure_installed)

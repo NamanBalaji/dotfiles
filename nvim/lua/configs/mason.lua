@@ -1,13 +1,13 @@
 return {
     ensure_installed = {
         -- lsp
+        "lua-language-server", -- lua
         "gopls", -- go
         "dockerls", -- docker
         "marksman", -- markdown
         "taplo", -- toml
 
         -- formatters
-
         "goimports", -- go
         "gofumpt",
         "gomodifytags",

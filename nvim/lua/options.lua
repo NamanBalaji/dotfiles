@@ -12,7 +12,7 @@ o.softtabstop = 4
 o.number = true
 o.relativenumber = true
 o.clipboard = "unnamedplus"
-o.wrap = false
+o.wrap = true
 
 o.foldcolumn = "1"
 o.foldlevel = 99

@@ -17,3 +17,10 @@ vim.api.nvim_create_autocmd("BufDelete", {
         end
     end,
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "lua", "go", "rust", "yaml", "toml", "bash", "markdown", "dockerfile", "proto", "make" },
+    callback = function()
+        vim.treesitter.start()
+    end,
+})

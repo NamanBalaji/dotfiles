@@ -8,7 +8,6 @@ local capabilities = nvlsp.capabilities
 local servers = {
     html = { on_attach = on_attach, on_init = on_init, capabilities = capabilities },
     cssls = { on_attach = on_attach, on_init = on_init, capabilities = capabilities },
-
     dockerls = { on_attach = on_attach, on_init = on_init, capabilities = capabilities },
     marksman = { on_attach = on_attach, on_init = on_init, capabilities = capabilities },
 

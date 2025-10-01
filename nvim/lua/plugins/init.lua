@@ -1,26 +1,25 @@
 return {
     {
         "nvim-treesitter/nvim-treesitter",
-        event = { "BufReadPre", "BufNewFile" },
+        lazy = false,
+        branch = "main",
+        build = ":TSUpdate",
         config = function()
             require("configs.nvim-treesitter")
         end,
     },
-
     {
         "williamboman/mason.nvim",
         opts = function()
             return require("configs.mason")
         end,
     },
-
     {
         "nvim-tree/nvim-tree.lua",
         opts = function()
             return require("configs.nvim-tree")
         end,
     },
-
     {
         "neovim/nvim-lspconfig",
         event = { "BufReadPre", "BufNewFile" },
@@ -29,13 +28,11 @@ return {
             require("configs.lspconfig")
         end,
     },
-
     {
         "stevearc/conform.nvim",
-        event = "BufWritePre", -- uncomment for format on save
+        event = "BufWritePre",
         opts = require("configs.conform"),
     },
-
     {
         "mfussenegger/nvim-lint",
         event = { "BufReadPre", "BufNewFile" },
@@ -43,12 +40,10 @@ return {
             require("configs.nvim-lint")
         end,
     },
-
     -- DAP + UI
     {
         "mfussenegger/nvim-dap",
     },
-
     {
         "rcarriga/nvim-dap-ui",
         dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
@@ -56,7 +51,25 @@ return {
             require("configs.nvim-dap-ui")
         end,
     },
-
+    {
+        "nvim-neotest/neotest",
+        dependencies = {
+            "nvim-neotest/nvim-nio",
+            "nvim-lua/plenary.nvim",
+            "nvim-treesitter/nvim-treesitter",
+            {
+                "fredrikaverpil/neotest-golang",
+                version = "*",
+                build = function()
+                    vim.system({ "go", "install", "gotest.tools/gotestsum@latest" }):wait()
+                end,
+            },
+            "antoinemadec/FixCursorHold.nvim",
+        },
+        config = function()
+            require("configs.neotest")
+        end,
+    },
     -- go
     {
         "ray-x/go.nvim",
@@ -65,9 +78,8 @@ return {
         opts = {
             lsp_cfg = false,
             trouble = false,
-            test_runner = "dlv", -- Use delve for debugging, not testing
             dap_debug = true,
-            dap_debug_keymap = false, -- Don't override our DAP keymaps
+            dap_debug_keymap = false,
         },
         config = function(_, opts)
             require("go").setup(opts)
@@ -91,7 +103,6 @@ return {
             require("configs.rustaceanvim").setup()
         end,
     },
-
     -- Crates support + completion for Cargo.toml
     {
         "Saecki/crates.nvim",
