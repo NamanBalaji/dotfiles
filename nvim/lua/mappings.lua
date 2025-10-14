@@ -88,5 +88,13 @@ map("n", "zK", function()
 end, { desc = "Peek fold or hover" })
 
 -- Code actions
-map("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP Code Action" })
-map("v", "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP Code Action" })
+map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP Code Action" })
+
+-- telescope LSP
+
+local tb = require("telescope.builtin")
+
+map("n", "gr", tb.lsp_references, { desc = "LSP References" })
+map("n", "gd", tb.lsp_definitions, { desc = "LSP Definitions" })
+map("n", "gi", tb.lsp_implementations, { desc = "LSP Implementations" })
+map("n", "gt", tb.lsp_type_definitions, { desc = "LSP Type Defs" })
