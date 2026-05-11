@@ -14,6 +14,9 @@ local ensure_installed = {
     "gomod",
     "gowork",
 
+    -- C
+    "c",
+
     "rust",
 
     -- other

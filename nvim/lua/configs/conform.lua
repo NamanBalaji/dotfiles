@@ -1,5 +1,6 @@
 local options = {
     formatters_by_ft = {
+        c = { "clang-format" },
         go = { "gofumpt", "goimports" },
         lua = { "stylua" },
         rust = { "rustfmt" },

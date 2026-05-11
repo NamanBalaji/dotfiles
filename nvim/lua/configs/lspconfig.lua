@@ -11,6 +11,23 @@ local servers = {
     dockerls = { on_attach = on_attach, on_init = on_init, capabilities = capabilities },
     marksman = { on_attach = on_attach, on_init = on_init, capabilities = capabilities },
 
+    clangd = {
+        on_attach = on_attach,
+        on_init = on_init,
+        capabilities = vim.tbl_deep_extend("force", capabilities, {
+            offsetEncoding = { "utf-16" },
+        }),
+        cmd = {
+            "clangd",
+            "--background-index",
+            "--clang-tidy",
+            "--header-insertion=iwyu",
+            "--completion-style=detailed",
+            "--function-arg-placeholders",
+            "--fallback-style=llvm",
+        },
+    },
+
     gopls = {
         on_attach = on_attach,
         on_init = on_init,

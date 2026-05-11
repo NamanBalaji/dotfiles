@@ -3,6 +3,7 @@ return {
         -- lsp
         "lua-language-server", -- lua
         "gopls", -- go
+        "clangd", -- C/C++
         "dockerls", -- docker
         "marksman", -- markdown
         "taplo", -- toml
