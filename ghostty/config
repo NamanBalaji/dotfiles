@@ -1,5 +1,6 @@
 config-file = ?auto/theme.ghostty
 mouse-hide-while-typing = true
-background-opacity = 0.9
+# background-opacity = 0.9
 font-family = "JetBrainsMono Nerd Font"
 font-thicken = true
+# macos-titlebar-style = hidden
